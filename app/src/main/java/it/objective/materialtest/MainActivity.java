@@ -1,16 +1,25 @@
 package it.objective.materialtest;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+
+    private ListView listView1;
+    private ArrayAdapter<String> listAdapter1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +28,18 @@ public class MainActivity extends ActionBarActivity {
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        listView1 = (ListView) findViewById(R.id.listView1);
+
+        String[] someColors = new String[] {"Rosso", "Verde", "Bianco", "Giallo", "Blu", "Marrone", "Celeste", "Rosa", "Rosso", "Verde", "Bianco", "Giallo", "Blu", "Marrone", "Celeste"};
+        ArrayList<String> colorArrayList = new ArrayList<String>();
+        colorArrayList.addAll(Arrays.asList(someColors));
+
+        listAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, colorArrayList);
+        listView1.setAdapter(listAdapter1);
+
+
+
     }
 
     @Override
